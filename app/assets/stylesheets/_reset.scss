@@ -12,6 +12,7 @@ html{
   color:#000;
   background:#FFF;
   font-size: 62.5%;
+  height: 100%;
 }
 /*
   TODO remove settings on BODY since we can't namespace it.
@@ -20,7 +21,6 @@ html{
   TODO test putting a class on HEAD.
       - Fails on FF.
 */
-body,
 div,
 dl,
 dt,
@@ -129,4 +129,32 @@ legend {
 
 main{
     padding-top: 70px;
+}
+
+body {
+  background-color: #f5f1ee;
+  font-family: "Helvetica", "メイリオ", "Meiryo", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "Osaka", "?E??E? ?E?ゴシチE??", "MS PGothic", sans-serif !important;
+  color: #555555;
+  line-height: 24px;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  padding-top: 54px;
+}
+
+input {
+  display: inline-block;
+  height: 18px;
+  padding: 4px;
+  margin-bottom: 9px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #555;
+}
+
+label {
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
 }
