@@ -1,21 +1,49 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "users/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "users/shared/links"
+.container
+  .container-box
+    .one-column
+      .login-container
+        .left-column
+          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            = render "users/shared/error_messages", resource: resource
+            .signup-form-fields
+              .categories
+                %h1.title 一般メンバー登録
+                %p こちらは一般会員ページになります。
+                .signup-with-facebook
+                  %h2.facebook-title Facebookで会員登録する
+                  .login-btn
+                    = link_to 'Facebookでログイン', '#', class: "facebook-btn"
+                %p.signup-with-email-title メールアドレスで会員登録する
+                .signup-with-email
+                  .control-group
+                    = f.label :nickname, class: "control-label" do
+                      %span.text ニックネーム
+                      %br
+                      (20文字以内)
+                    .controls
+                      = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
+                  .control-group
+                    = f.label :gender, class: "control-label" do
+                      %span.text 性別
+                    .controls
+                      = f.collection_radio_buttons :gender, User.genders_i18n, :first , :first
+                  .control-group
+                    = f.label :email, class: "control-label" do
+                      %span.text メールアドレス
+                    .controls 
+                      = f.email_field :email, autofocus: true, autocomplete: "email"
+                  .control-group
+                    = f.label :password, class: "control-label" do
+                      %span.text パスワード
+                    .controls
+                      = f.password_field :password, autofocus: true, autocomplete: "password"
+                  .control-group
+                    = f.label :password_confirmation, class: "control-label" do
+                      %span.text パスワード確認用
+                    .controls
+                      = f.password_field :password_confirmation, autofocus: true, autocomplete: "nickname"
+                  %p philosophia一般利用規約 をご確認の上、「同意して登録する」をおしてください
+                  .btn-area
+                    = f.submit "会員登録をする", class: 'btn'
+          = render "users/shared/links"
+
