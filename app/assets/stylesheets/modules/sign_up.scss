@@ -1,0 +1,112 @@
+.left-column {
+  margin: 0 20px 0 0;
+  width: 620px;
+  .signup-form-fields {
+    background-color: #fff;
+    padding: 20px 0px 20px 20px;
+    .categories {
+      width: 620px;
+      .title {
+        background-image: none;
+        color: #333;
+        font-size: 22px;
+        font-weight: bold;
+        margin: 0px;
+      }
+      .signup-with-facebook {
+        background-color: #F6F6F6;
+        border-radius: 4px;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        .facebook-title {
+          color: #333;
+          font-size: 16px;
+          font-weight: normal;
+          padding-bottom: 0px;
+        }
+        .login-btn {
+          padding: 8px;
+          .facebook-btn {
+            display: inline-block;
+            text-decoration: none;
+            border: 1px solid;
+            border-radius: 100px;
+            width: 200px;
+            text-align: center;
+            background-color: #0059ffe3;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+          }
+        }
+      }
+      .signup-with-email-title {
+        margin-left: 10px;
+        padding-bottom: 0px;
+      }
+      .signup-with-email {
+        background-color: #F6F6F6;
+        border-radius: 4px;
+        padding: 10px;
+        .control-group {
+          padding: 7px 0;
+          margin-bottom: 0;
+          display: flex;
+          .controls {
+            padding: 0.5em 0;
+            margin-left: 80px;
+            #user_nickname,
+            #user_email,
+            #user_password,
+            #user_password_confirmation {
+              background-color: #fff;
+              border: 1px solid #ccc;
+              border-radius: 3px;
+              box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+              transition: border linear .2s,box-shadow linear .2s;
+              width: 330px;
+            }
+            label {
+              margin-right: 2em;
+              vertical-align: 20%;
+            }
+          }
+        }
+        p {
+          text-align: center;
+        }
+        .btn-area {
+          padding-top: 10px;
+          text-align: center;
+          .btn {
+            font-weight: bold;
+            width: 170px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+  #error_explanation {
+    background-color: #ecc0c0;
+    margin: 20px 0px 20px 20px;
+    width: 620px;
+    h2 {
+      padding-left: 5px;
+      font-size: 15px;
+      color: red;
+    }
+    li {
+      color: red;
+      font-size: 13px;
+      padding-left: 5px;
+    }
+  }
+}
+
+.control-label {
+  text-align: left;
+  width: 110px;
+  padding-left: 30px;
+  font-weight: bold;
+}
