@@ -1,0 +1,36 @@
+.container
+  .container-box
+    .one-column
+      .login-container
+        .left-column
+          = form_with model: @question, local: true  do |f|
+            = render "users/shared/error_messages", resource: @question
+            .signup-form-fields
+              .categories
+                %h1.title 質問する
+                %p どんな質問もお受けします。
+                .signup-with-facebook
+                  %h2.facebook-title 寛大さは行動と自由への鍵である。
+                  .login-btn
+                    ハンナ・アーレント
+                %p.signup-with-email-title 質問フォーム
+                .signup-with-email
+                  .control-group
+                    = f.label :category, class: "control-label" do
+                      %span.text カテゴリーを選択してください
+                    .controls
+                      = f.select :category, Question.categories.keys.to_a
+                  .control-group
+                    = f.label :title, class: "control-label" do
+                      %span.text タイトルを入力してください
+                    .controls
+                      = f.text_field :title
+                  .control-group
+                    = f.label :question, class: "control-label" do
+                      %span.text 質問内容を入力してください
+                    .controls 
+                      = f.text_area :question, rows: 10
+                  %p philosophia一般利用規約をご確認の上、「同意して質問する」をおしてください
+                  .btn-area
+                    = f.submit "質問する", class: 'btn'
+
