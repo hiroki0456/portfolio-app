@@ -1,0 +1,41 @@
+.question-form
+  .question-box
+    %h1.title 質問を確認する
+    .message
+      %h2.message-content 
+        人は呼吸するために呼吸し
+        %br
+        飲食するために飲食し
+        %br
+        散歩するために散歩する。
+      .message-author
+        エマニュエル・レヴィナス
+    .coution-box
+      %ul.check-list
+        %li
+          個人情報は記載していませんか。
+        %li
+          分かりやすいタイトルになっていますか。
+        %li
+          分かりやすい質問になっていますか。
+    %p.confirm
+      カテゴリー:
+    %span.ctitle
+      = simple_format(Category.find(params[:question][:category_id]).name)
+    %p.confirm 
+      タイトル:
+    %span.ctitle
+      = simple_format(params[:question][:title])
+    %p.confirm
+      質問内容:
+    %span.ctitle
+      = simple_format(params[:question][:question])
+    %p.confirm 
+      投稿者:
+    %span.ctitle
+      = simple_format(current_user.nickname)
+    .three-btn
+      %button 投稿する
+      %button 下書き保存する
+      %button 修正する
+

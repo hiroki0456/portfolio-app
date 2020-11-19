@@ -1,0 +1,92 @@
+.question-form {
+  margin-left: 240px;
+  padding: 20px 0px 20px 20px;
+  width: 620px;
+  background-color: white;
+  .question-box {
+    width: 620px;
+    padding: 20px 0px 20px 20px;
+    .title {
+      color: #e6c11d;
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 18px;
+      line-height: 27px;
+    }
+    .message {
+      background-color: #F6F6F6;
+      border-radius: 4px;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      width: 520px;
+      font-style: italic;
+      .message-content {
+        color: #333;
+        font-size: 16px;
+        font-weight: normal;
+        padding-bottom: 0px;
+      }
+      .message-author {
+        padding: 8px;
+      }
+    }
+    .coution-box {
+      border: 1px solid #f57474;
+      padding: 15px 15px 0 15px;
+      margin-bottom: 15px;
+      width: 530px;
+      .check-list {
+        list-style-type: disc;
+        li {
+          font-size: 15px;
+          margin-bottom: 7px;
+          margin-left: 5px;
+          font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+          font-weight: 500;
+          line-height: 1.8;
+          color: #333;
+          letter-spacing: 0.95px;
+        }
+      }
+    }
+    .confirm {
+      font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+      font-weight: 700;
+      line-height: 1.8;
+      color: #333;
+      letter-spacing: 0.95px;
+      font-size: 15px;
+      margin-bottom: 5px;
+      width: 550px;
+      overflow-wrap: break-word;
+    }
+    .ctitle {
+      font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+      font-weight: 500;
+      line-height: 1.8;
+      color: #333;
+      letter-spacing: 0.95px;
+      font-size: 15px;
+      width: 550px;
+      overflow-wrap: break-word;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .three-btn {
+      display: flex;
+      width: 550px;
+      button {
+        width: 555px;
+        background: white;
+        padding: 15px 0;
+        font-weight: bold;
+        color: #2e2941;
+        border: rgba(0, 0, 0, 0.4) 1px solid;
+        margin-top: 20px;
+        line-height: 3px;
+        opacity: 0.5;
+        margin: 0 5px;
+      }
+    }
+  }
+}
