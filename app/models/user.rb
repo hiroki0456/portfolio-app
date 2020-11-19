@@ -2,6 +2,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # association
+  has_many :questions
+
+  # validation
   with_options presence: true do
     validates :nickname
     validates :gender
@@ -12,6 +16,8 @@ class User < ApplicationRecord
   # ユーザーの利用頻度を考慮すると6文字くらいでないと覚えられない可能性がある
   validates :password, format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,20}+\z/i, message: "can be set using half-width English numbers and letters, using more than 6 characters but less than 20."}
 
+  # これ以上の追加を想定しないため、
+  # enumを使用する
   enum gender: {
         female: 0,
         male: 1,

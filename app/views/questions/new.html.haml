@@ -1,0 +1,35 @@
+.question-form
+  .question-box
+    %h1.title 質問する
+    .message
+      %h2.message-content 寛大さは行動と自由への鍵である。
+      .message-author
+        ハンナ・アーレント
+    .form
+      = form_with model: @question, local: true  do |f|
+        = render "shares/errors", model: @question
+        .control-group
+          = f.label :category_id do
+            %span.text カテゴリーを選択してください
+          .controls
+            = f.collection_select :category_id, Category.all, :id, :name
+        .control-group
+          = f.label :title do
+            %span.text タイトルを入力してください(20文字以内)
+          .controls
+            = f.text_field :title
+        .control-group
+          = f.label :question do
+            %span.text 質問内容を入力してください
+          .controls 
+            = f.text_area :question, rows: 10
+            %p.count
+              %span.answer 0 
+              %span.max-count / 1000文字以内
+        %p.caution 
+          入力した内容は一般公開されます。
+          %br
+          個人情報は記入しないようにご注意をお願いいたします。
+        .btn-area
+          = f.submit "質問する", class: 'btn'
+

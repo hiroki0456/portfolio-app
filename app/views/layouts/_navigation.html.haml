@@ -1,10 +1,12 @@
 %header
   .header-value
     .logo-section
-      %a.brand-logo philosophia
+      = link_to "philosophia", root_path, class:"brand-logo"
     .user-section
       %ul.sign-in
         - if user_signed_in?
+          %li
+            = link_to "質問する", new_question_path
           %li
             = link_to "ログアウト", destroy_user_session_path, method: :delete
         - else
