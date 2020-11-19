@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
+  # move_to_index, only: [:new]
   def index
   end
 
@@ -18,6 +20,10 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:category, :title, :question).merge(user_id: current_user.id)
+    params.require(:question).permit(:category_id, :title, :question).merge(user_id: current_user.id)
+  end
+
+  def move_to_index
+    # redirect_to 
   end
 end
