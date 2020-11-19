@@ -1,23 +1,15 @@
 class Question < ApplicationRecord
+  # active_hashのassociation
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+
+  # 通常のassociation
   belongs_to :user
 
+  # validation
   with_options presence: true do
-    validates :category
-    validates :title
-    validates :question
+    validates :category_id, numericality: {other_than: 0, message: 'Select'}
+    validates :title, length: {maximum: 20}
+    validates :question, length: {maximum: 1000}
   end
-  
-  # カテゴリーはそこまで増加しない想定のため、
-  # enumを使用する
-  enum category: {
-        "生について": 0,
-        "死について": 1,
-        "愛について": 2,
-        "運命について": 3,
-        "結婚について": 4,
-        "子供について": 5,
-        "思考について": 6,
-        "自由について": 7,
-        "優しさについて": 8
-      }
 end
