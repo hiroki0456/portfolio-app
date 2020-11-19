@@ -6,7 +6,7 @@
       .message-author
         ハンナ・アーレント
     .form
-      = form_with model: @question, local: true  do |f|
+      = form_with model: @question,url: confirm_questions_path, method: :get, local: true  do |f|
         = render "shares/errors", model: @question
         .control-group
           = f.label :category_id do

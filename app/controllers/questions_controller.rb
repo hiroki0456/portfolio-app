@@ -17,6 +17,9 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def confirm
+  end
+
   private
 
   def question_params

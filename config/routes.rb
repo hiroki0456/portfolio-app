@@ -5,5 +5,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :questions, only: [:new, :create]
+  resources :questions, only: [:new, :create] do
+    collection do
+      get 'confirm'
+    end
+  end
 end
