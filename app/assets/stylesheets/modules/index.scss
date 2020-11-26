@@ -1,0 +1,212 @@
+.container {
+  width: 100%;
+  background-color: white;
+  margin-bottom: 20px;
+  height: 600px;
+  text-align: center;
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 1.4rem 0;
+    text-align: center;
+    padding-top: 100px;
+  }
+  span {
+    font-size: 10px;
+    font-weight: 800;
+  }
+  .button {
+    text-align: center;
+    button {
+      width: 300px;
+      background: white;
+      padding: 15px 0;
+      font-weight: bold;
+      color: #2e2941;
+      border: rgba(0,0,0,0.4) 1px solid;
+      margin-top: 20px;
+      line-height: 3px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+  .container-box {
+    .images {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      bottom: 50%;
+      transform: translateY(30%) translateX(-50%);
+      display: flex;
+      .image {
+        overflow: hidden;
+        border-width: 3px;
+        border-style: solid;
+        border-radius: 50%;
+        height: 200px;
+        width: 200px;
+        margin-top: 20px;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+.main {
+  width: 1010px;
+  display: flex;
+  margin: 5px auto 0;
+  padding: 79px 00;
+  .left-colum {
+    width: 700px;
+    .title-box {
+      background-color: white;
+      color: #e6c11d;
+      line-height: 1.5;
+      padding: 20px;
+      font-weight: bold;
+      font-size: 17px;
+      letter-spacing: 1px;
+      vertical-align: bottom;
+    }
+    .question-box {
+      background-color: white;
+      margin-bottom: 10px;
+      .question {
+        border-top: 1px solid #ebebeb;
+        padding: 16px 20px 15px;
+        a {
+          text-decoration: none;
+          font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+          font-weight: 500;
+          line-height: 1.8;
+          color: #333;
+          letter-spacing: 0.95px;
+          .date {
+            font-size: 13px;
+            margin-right: 10px;
+          }
+          .icon {
+            white-space: nowrap;
+            margin: 0;
+            padding: 0px 10px;
+            border-radius: 12px;
+            background-color: #e6c11d;
+            text-align: center;
+            font-size: 13px;
+            letter-spacing: normal;
+            color: white;
+            display: inline-block;
+          }
+          h3 {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #333;
+            margin: 8px 0 0 0;
+            line-height: 1.5;
+          }
+          p {
+            margin: 10px 0 5px;
+            font-size: 15px;
+            padding: 0;
+            text-overflow: ellipsis;
+            line-height: 1.7;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+    .plain-btn {
+      a {
+        text-decoration: none;
+        .btn {
+          background-color: white;
+          display: block;
+          width: 245px;
+          margin: 20px auto 30px;
+          text-decoration: none !important;
+          color: #333;
+          border: solid 0.5px #2e2941;
+          height: 54px;
+          cursor: pointer;
+        }
+      }
+    }
+    .box {
+      padding: 20px 15px 30px;
+      width: 100%;
+      font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+      font-weight: 500;
+      line-height: 1.8;
+      color: #333;
+      letter-spacing: 0.95px;
+      .search-form { 
+        width: 100%;
+        .box {
+          display: flex;
+          .input-field {
+            width: 80%;
+            height: 30px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            background-color: #ffffff;
+            border: solid 1px#e6c11d;
+            padding-left: 10px;
+            flex-grow: 0;
+            font-size: 15px;
+          }
+          input[type="submit"] {
+            height: 40px;
+            width: 64px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border: 1px solid #e6c11d;
+            border-left: none;
+            background-color: #e6c11d;
+            color: white;
+            font-size: 14px;
+            display: block;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .category-box {
+      .category-title {
+        background-color: white;
+        line-height: 1.5;
+        font-weight: bold;
+        font-size: 17px;
+        letter-spacing: 1px;
+        span {
+          background-color: white;
+          color: #e6c11d;
+          line-height: 1.5;
+          font-weight: bold;
+          font-size: 17px;
+          letter-spacing: 1px;
+          padding: 20px 20px;
+          display: inline-block;
+        }
+      }
+      .categories {
+        background-color: white;
+        border-top: 1px solid #ebebeb;
+        border-bottom: 1px solid #ebebeb;
+        li {
+          border-bottom: 1px solid #ebebeb;
+          padding: 10px 40px 10px 20px;
+          font-family: HiraKakuPro-W3;
+          font-weight: bold;
+          a {
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

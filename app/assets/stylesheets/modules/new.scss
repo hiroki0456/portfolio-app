@@ -3,6 +3,8 @@
   padding: 20px 0px 20px 20px;
   width: 620px;
   background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
   .question-box {
     width: 620px;
     padding: 20px 0px 20px 20px;
@@ -103,6 +105,7 @@
           border: rgba(0,0,0,0.4) 1px solid;
           margin-top: 20px;
           line-height: 3px;
+          cursor: pointer;
     opacity: 0.5;
         }
       }

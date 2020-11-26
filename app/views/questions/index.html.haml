@@ -1,2 +1,51 @@
-%h1 Questions#index
-%p Find me in app/views/questions/index.html.haml
+.container
+  %h2 
+    人生の意味はひとつしかない。
+  %span 哲学者と一緒に考える
+  %br
+  %span 対話型相談サイト
+    
+  .button
+    = link_to new_question_path, class: "question-box" do
+      %button 問を立てる
+  .container-box
+    .images
+      = image_tag 'arendt-image.jpg', class: "image"
+      = image_tag '21c2dc6f55e104a803756138b3a9c16d.webp', class: "image"
+      = image_tag 'unnamed.jpg', class: "image"
+      = image_tag 't02200293_0300040012868317485.jpg', class: "image"
+.main
+  .left-colum
+    %h2.title-box
+      .title 新着ダイアローグ
+    .question-box
+      - @questions.each do |question|
+        .question
+          = link_to "#" do
+            %span.date= question.created_at.strftime('%Y/%m/%d')
+            %span.icon 回答受付中
+            %h3= question.title
+            %p= question.question
+            .like-answer
+              .like-count
+              .answer-count
+          .like-answer
+            .like-count
+            .answer-count
+      .plain-btn
+        = link_to "#" do
+          %button.btn 問をもっと見る
+      .box
+        = form_with html: {class: "search-form"}, local: true do |f|
+          .box
+            = f.text_field :search, class: "input-field", placeholder: "キーワードで問を検索する"
+            = f.submit "検索"
+    .category-box
+      %h2.category-title
+        %span カテゴリーで探す
+        %Ul.categories
+          - Category.all.drop(1).each do |category|
+            %li
+              = link_to "#{category.name}", "#"
+
+
