@@ -1,0 +1,36 @@
+.main-show
+  .left-column-show
+    .default
+      .question
+        .detail
+          .title 
+            = @question.title
+            %span 回答受付中
+          .user-profile
+            .user-info
+              = link_to @question.user.nickname, "#"
+              %span= @question.user.gender_i18n
+          .tag
+            = link_to "# #{@question.category.name}", "#", class: "link-tag"
+          .body
+            = simple_format(@question.question)
+            %span.date= @question.created_at.strftime('%Y年%m月%d日 %H時%M分')
+      .answers
+        .number= "哲学者からの回答 1件"
+        .box
+          %h2.title よく分かります
+          .answer-box
+            = simple_format(@question.question)
+            %span.date= @question.created_at.strftime('%Y年%m月%d日 %H時%M分')
+            .flexbox
+              .thanks-button
+                .thanks-num= 1
+                %button.thanks 自由になった
+            %hr.line
+            .philosophia
+              = link_to "#" do
+                = image_tag 'Charles.jpg'
+              .profile
+                = link_to "チャールズ・テイラー", "#"
+                .introduce
+                  モントリオール出身。1952年にカナダの名門マギル大学を卒業（歴史専攻）、同年オックスフォード大学のローズ奨学生（Rhodes Scholar）となり、哲学、政治学および経済学を研究、1961年に哲学博士となった。

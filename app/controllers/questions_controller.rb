@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   # move_to_index, only: [:new]
   def index
-    @questions = Question.order(created_at: "desc")
+    @questions = Question.order(created_at: "desc").limit(5)
   end
 
   def new
@@ -16,6 +16,10 @@ class QuestionsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @question = Question.find(params[:id])
   end
 
   def confirm
