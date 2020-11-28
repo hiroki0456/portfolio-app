@@ -1,0 +1,217 @@
+.main-show {
+  width: 1010px;
+  display: flex;
+  margin: 5px auto 0;
+  .left-column-show {
+    width: 700px;
+    margin-right: 20px;
+    .default {
+      margin-top: 65px;
+      .question {
+        background-color: white;
+        .detail {
+          padding: 30px 20px;
+          .title {
+            margin-bottom: 30px;
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 1.5;
+            letter-spacing: 1.4px;
+            margin: 0 10px 0 0;
+            span {
+              white-space: nowrap;
+              margin: 0;
+              padding: 0px 10px;
+              border-radius: 12px;
+              background-color: #e6c11d;;
+              text-align: center;
+              font-size: 13px;
+              letter-spacing: normal;
+              color: white;
+              display: inline-block;
+            }
+          }
+          .user-profile {
+            .user-info {
+              a {
+                font-size: 15px;
+                font-weight: bold;
+                color: #f57474;
+                text-decoration: underline;
+                margin-right: 10px;
+              }
+              span {
+                font-size: 15px;
+                font-weight: bold;
+                margin-right: 10px;
+              }
+            }
+          }
+          .tag {
+            margin: 5px 0 0;
+            .link-tag {
+              font-size: 13px;
+              font-weight: bold;
+              color: #f57474;
+              text-decoration: underline;
+            }
+          }
+          .body {
+            margin: 20px 0 10px;
+            p {
+              font-size: 17px;
+              margin: 0 0 20px;
+              font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+              font-weight: 500;
+              line-height: 1.8;
+              color: #333;
+              letter-spacing: 0.95px;
+            }
+            .date {
+              color: #4a4a4a;
+              font-size: 14px;
+              margin: 10px 0 20px;
+            }
+          }
+        }
+      }
+      .answers {
+        margin-top: 10px;
+        margin-bottom: 50px;
+        padding: 30px 10px 10px;
+        background-color: #e6c11d;
+        .number {
+          font-size: 20px;
+          font-weight: bold;
+          margin: 0 10px 15px;
+        }
+        .box {
+          margin: 0 0 30px;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 5px;
+          .title {
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+          }
+          .answer-box {
+            font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+            font-weight: 500;
+            line-height: 1.8;
+            color: #333;
+            letter-spacing: 0.95px;
+            p {
+              font-size: 17px;
+              margin: 0 0 20px 0;
+            }
+            .date {
+              color: #4a4a4a;
+              font-size: 14px;
+              margin: 10px 0 20px;
+            }
+            .flexbox {
+              display: flex;
+              .thanks-button {
+                display: flex;
+                align-items: center;
+                margin: 0 10px 30px auto;
+                .thanks-num {
+                  text-align: center;
+                  height: 25px;
+                  margin-right: 12px;
+                  border: 1px solid #ccc;
+                  border-radius: 2px;
+                  padding: 0 5px 2px;
+                  font-size: 15px;
+                  letter-spacing: 0.8px;
+                  color: #333;
+                  position: relative;
+                  line-height: 25px;
+                  min-width: 30px;
+                  &:before {
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    right: -5px;
+                    top: 6px;
+                    border-left: 5px solid #ccc;
+                    border-top: 5px solid transparent;
+                    border-bottom: 5px solid transparent;
+                  }
+                  &:after {
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    right: -4px;
+                    top: 6px;
+                    border-left: 5px solid white;
+                    border-top: 5px solid transparent;
+                    border-bottom: 5px solid transparent;
+                  }
+                }
+                .thanks {
+                  cursor: pointer;
+                  width: 120px;
+                  height: 50px;
+                  border-radius: 2px;
+                  box-shadow: 1px 1px 0 0 rgba(143,123,123,0.5);
+                  background-color: #f8f8f8;
+                  background-size: 23px 24px;
+                  background-repeat: no-repeat;
+                  background-position-x: 14px;
+                  background-position-y: 12px;
+                  color: #333;
+                  font-size: 15px;
+                  border: rgba(0, 0, 0, 0.4) 1px solid;
+                }
+              }
+            }
+            .line {
+              height: 0;
+              padding: 0;
+              border: 0;
+              border-top: 1px solid #ebebeb;
+              margin: 0 0 20px;
+            }
+            .philosophia {
+              display: flex;
+              a {
+                img {
+                  width: 100px;
+                  height: 100px;
+                  border-radius: 50%;
+                }
+              }
+              .profile {
+                a {
+                  margin-right: auto;
+                  font-size: 15px;
+                  font-weight: bold;
+                  color: #f57474;
+                  text-decoration: underline;
+                  padding-right: 10px;
+                  padding-left: 10px;
+                }
+                .introduce {
+                  margin: 10px 10px;
+                  font-size: 15px;
+                  line-height: 20px;
+                  color: #4a4a4a;
+                  display: -webkit-box;
+                  -webkit-box-orient: vertical;
+                  -webkit-line-clamp: 2;
+                  overflow: hidden;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

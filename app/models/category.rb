@@ -13,4 +13,7 @@ class Category < ActiveHash::Base
     {id: 8, name: "自由について"},
     {id: 9, name: "優しさについて"}
   ]
+
+  include ActiveHash::Associations
+  has_many :questions
 end
