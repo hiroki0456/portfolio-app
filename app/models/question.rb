@@ -5,7 +5,7 @@ class Question < ApplicationRecord
 
   # 通常のassociation
   belongs_to :user
-
+  has_many :comments, dependent: :destroy
   # validation
   with_options presence: true do
     validates :category_id, numericality: {other_than: 0, message: 'Select'}

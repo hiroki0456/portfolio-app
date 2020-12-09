@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
+  before_action :set_question, only: [:show, :like]
   # move_to_index, only: [:new]
   def index
     @questions = Question.order(created_at: "desc").limit(5)
@@ -19,7 +20,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
+    @comment = Comment.new
   end
 
   def confirm
@@ -29,6 +30,10 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:category_id, :title, :question).merge(user_id: current_user.id)
+  end
+
+  def set_question
+    @question = Question.find(params[:id])
   end
 
   def move_to_index

@@ -9,5 +9,13 @@ Rails.application.routes.draw do
     collection do
       get 'confirm'
     end
+    resources :comments, only: [:create, :edit] do
+      member do
+        get 'like'
+      end
+      collection do
+        get 'find_like'
+      end
+    end
   end
 end

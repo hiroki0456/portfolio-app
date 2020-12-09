@@ -4,7 +4,8 @@ class User < ApplicationRecord
 
   # association
   has_many :questions
-
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   # validation
   with_options presence: true do
     validates :nickname

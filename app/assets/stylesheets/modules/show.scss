@@ -212,6 +212,65 @@
           }
         }
       }
+      .comment {
+        background-color: #e6c11d;
+        position: relative;
+        position: relative;
+        padding: 10px 20px 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        .comment-container {
+          border-radius: 10px;
+          padding: 50px 40px 40px;
+          background-color: white;
+          margin-bottom: 10px;
+          .triangle {
+            margin: auto;
+            width: 0px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -10px;
+            height: 0;
+            border-style: solid;
+            border-width: 0 15px 30px 15px;
+            border-color: transparent transparent #ffffff transparent;
+          }
+          .text-field {
+            #comment_title {
+              padding: 0;
+              width: 100%;
+              border: groove;
+              height: 40px;    
+              font-size: 14px;
+              letter-spacing: 0.95px;
+            }
+            #comment_comment {
+              width: 100%;
+              border: groove;
+              font-size: 14px;
+              letter-spacing: 0.95px;
+            }
+          }
+          .comment-btn {
+            text-align: center;
+            input[type="submit"] {
+              width: 300px;
+              background: white;
+              padding: 15px 0;
+              font-weight: bold;
+              color: #2e2941;
+              border: rgba(0, 0, 0, 0.4) 1px solid;
+              margin-top: 20px;
+              line-height: 3px;
+              border-radius: 5px;
+              cursor: pointer;
+            }
+          }
+
+        }
+        
+      }
     }
   }
 }
