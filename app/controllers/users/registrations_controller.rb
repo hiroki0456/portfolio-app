@@ -14,7 +14,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       sign_in(@user)
       redirect_to root_path
     else
-      render :new
+      flash[:notice] = @user.errors.messages
+      redirect_to new_user_registration_path
     end
   end
 
