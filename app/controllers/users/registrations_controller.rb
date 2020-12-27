@@ -32,6 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     @user = User.find(current_user.id)
+    byebug
     if @user.update(account_update_params)
     else
     end
@@ -59,7 +60,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :gender])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :gender, user_profile_attributes: [:profile, :kleshas]])
   end
 
   # The path used after sign up.
