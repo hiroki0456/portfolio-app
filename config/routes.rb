@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  devise_scope :user do
+    get "edit_user", to: "users/registrations#user_edit", as: :edit_user
+  end
+
   resources :questions, only: [:new, :create, :show] do
     collection do
       get 'confirm'
@@ -18,4 +22,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :users, only: [:show]
 end

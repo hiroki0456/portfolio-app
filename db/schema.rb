@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_160839) do
+ActiveRecord::Schema.define(version: 2020_12_11_141214) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment", null: false
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 2020_11_28_160839) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "philosopher_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "profile"
+    t.string "affiliation"
+    t.text "research"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_philosopher_profiles_on_user_id"
+  end
+
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "category_id", null: false
     t.string "title", null: false
@@ -42,12 +52,22 @@ ActiveRecord::Schema.define(version: 2020_11_28_160839) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
+  create_table "user_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "profile"
+    t.text "kleshas"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
     t.integer "gender", null: false
     t.boolean "admin", default: false, null: false
+    t.boolean "philosopher", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -61,5 +81,7 @@ ActiveRecord::Schema.define(version: 2020_11_28_160839) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"
+  add_foreign_key "philosopher_profiles", "users"
   add_foreign_key "questions", "users"
+  add_foreign_key "user_profiles", "users"
 end

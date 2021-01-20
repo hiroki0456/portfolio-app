@@ -1,0 +1,28 @@
+.profile-content
+  .profile-user
+    .user-flexbox
+      %h2
+        = @user.nickname
+        %span.sub-text さん
+      .q-num 
+        回答あり質問
+        %span.num= @user.questions.reject{|question| !question.comments.present?}.count
+        件
+    .row
+      .user-profile
+        性別/年代
+      %span= @user.gender_i18n
+    .row
+      .user-profile
+        プロフィール
+      - if @user.user_profile
+        %span= @user.user_profile.profile
+    .row
+      .user-profile
+        煩悩
+      - if @user.user_profile
+        %span= @user.user_profile.kleshas
+    = link_to edit_user_path do
+      %button アカウントを編集する
+
+
