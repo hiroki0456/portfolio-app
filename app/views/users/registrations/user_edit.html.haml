@@ -30,15 +30,11 @@
                         %span.text プロフィール
                       .controls
                         = p.text_area :profile, rows: 10, style: "width: 330px"
-                    -if flash[:notice] && flash[:notice]["profile"]
-                      %span.error パスワードと一致させてください
                     .control-group
                       = p.label :kleshas, class: "control-label" do
                         %span.text 煩悩
                       .controls
                         = p.text_area :kleshas, rows: 10, style: "width: 330px"
-                    -if flash[:notice] && flash[:notice]["profile"]
-                      %span.error パスワードと一致させてください
                   %p philosophia一般利用規約 をご確認の上、「同意して登録する」をおしてください
                   .btn-area
                     = f.submit "更新する", class: 'btn'
