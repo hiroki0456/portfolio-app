@@ -8,3 +8,27 @@
 @import 'modules/footer';
 @import 'modules/show';
 @import 'modules/user_show';
+
+.pagination>span>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+  font-size: 15px;
+  margin: 0 10px;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.current {     
+  background: white; /*背景の色を変える*/
+  border-radius: 15px; 
+  font-size: 15px;    /*角を丸くする*/
+  margin: 0 10px;
+  padding-left: 13px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/*ホバー時のデザイン*/
+.pagination>span:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+}

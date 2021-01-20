@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :questions, only: [:new, :create, :show] do
     collection do
       get 'confirm'
+      get 'question_all'
     end
     resources :comments, only: [:create, :edit] do
       member do

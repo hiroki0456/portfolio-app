@@ -6,6 +6,10 @@ class QuestionsController < ApplicationController
     @questions = Question.order(created_at: "desc").limit(5)
   end
 
+  def question_all
+    @questions = Question.page(params[:page]).per(10)
+  end
+
   def new
     @question = Question.new
   end
