@@ -1,0 +1,19 @@
+.main
+  .left-colum
+    %h2.title-box
+      .title 新着ダイアローグ
+    .question-box
+      - @questions.each do |question|
+        .question
+          = link_to question_path(question) do
+            %span.date= question.created_at.strftime('%Y/%m/%d')
+            %span.icon 回答受付中
+            %h3= question.title
+            %p= question.question
+            .like-answer
+              .like-count
+              .answer-count
+          .like-answer
+            .like-count
+            .answer-count
+    = paginate @questions

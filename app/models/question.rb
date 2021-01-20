@@ -12,4 +12,8 @@ class Question < ApplicationRecord
     validates :title, length: {maximum: 20}
     validates :question, length: {maximum: 1000}
   end
+
+  def self.search(search)
+    Question.where("question like ?", "%#{search}%")
+  end
 end
