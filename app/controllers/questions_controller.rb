@@ -27,7 +27,8 @@ class QuestionsController < ApplicationController
     @comment = Comment.new
   end
 
-  def confirm
+  def search
+    @questions = Question.search(params[:search]).page(params[:page]).per(10)
   end
 
   private

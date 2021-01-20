@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     collection do
       get 'confirm'
       get 'question_all'
+      get 'search'
     end
     resources :comments, only: [:create, :edit] do
       member do
