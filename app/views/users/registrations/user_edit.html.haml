@@ -21,7 +21,7 @@
                     = f.label :gender, class: "control-label" do
                       %span.text 性別
                     .controls
-                      = f.collection_radio_buttons :gender, User.genders_i18n, :first , :first
+                      = f.collection_radio_buttons :gender, User.genders_i18n, :first , :second
                   -if flash[:notice] && flash[:notice]["gender"]
                     %span.error 性別を入力してください
                   = f.fields_for :user_profile do |p|

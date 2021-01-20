@@ -32,9 +32,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     @user = User.find(current_user.id)
-    byebug
     if @user.update(account_update_params)
+      redirect_to user_path(current_user)
     else
+      flash[:notice] = @user.errors.messages
+      redirect_to edit_user_path
     end
   end
 
