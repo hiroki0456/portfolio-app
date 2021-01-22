@@ -31,6 +31,11 @@ class QuestionsController < ApplicationController
     @questions = Question.search(params[:search]).page(params[:page]).per(10)
   end
 
+  def category_search
+    @category = Category.find(params[:category_id])
+    @questions = @category.questions.page(params[:page]).per(10)
+  end
+
   private
 
   def question_params
