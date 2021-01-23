@@ -7,9 +7,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one :user_profile, dependent: :destroy
-  has_one :philosopher_profile, dependent: :destroy
   accepts_nested_attributes_for :user_profile, allow_destroy: true
-  accepts_nested_attributes_for :philosopher_profile, allow_destroy: true
   # validation
   with_options presence: true do
     validates :nickname

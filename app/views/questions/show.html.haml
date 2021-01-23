@@ -17,15 +17,15 @@
             = simple_format(@question.question)
             %span.date= @question.created_at.strftime('%Y年%m月%d日 %H時%M分')
       - if @question.comments
-        - @question.comments.each do |comment|
-          .answers
-            .number= "哲学者からの回答 #{@question.comments.count}件"
+        .answers
+          .number= "哲学者からの回答 #{@question.comments.count}件"
+          - @question.comments.each do |comment|
             .box
               %h2.title= comment.title
               .answer-box
                 = simple_format(comment.comment)
                 %span.date= comment.created_at.strftime('%Y年%m月%d日 %H時%M分')
-                - if user_signed_in?
+                - if user_signed_in? && !current_user.philosopher
                   .flexbox#like
                     %like-button{":question-id" => "#{@question.id}", ":comment-id" => "#{comment.id}", ":user-id" => "#{current_user.id}"}
                 %hr.line
@@ -36,13 +36,14 @@
                     = link_to "チャールズ・テイラー", "#"
                     .introduce
                       モントリオール出身。1952年にカナダの名門マギル大学を卒業（歴史専攻）、同年オックスフォード大学のローズ奨学生（Rhodes Scholar）となり、哲学、政治学および経済学を研究、1961年に哲学博士となった。
-      .comment
-        .comment-container
-          .triangle
-          = form_with model: [@question,@comment], local: true do |f|
-            .text-field
-              = f.text_field :title, placeholder: "タイトルを入力してください"
-            .text-field
-              = f.text_area :comment, rows: 10, placeholder: "回答を入力してください"
-            .comment-btn
-              = f.submit "回答する"
+      - if user_signed_in? && current_user.philosopher
+        .comment
+          .comment-container
+            .triangle
+            = form_with model: [@question,@comment], local: true do |f|
+              .text-field
+                = f.text_field :title, placeholder: "タイトルを入力してください"
+              .text-field
+                = f.text_area :comment, rows: 10, placeholder: "回答を入力してください"
+              .comment-btn
+                = f.submit "回答する"

@@ -8,7 +8,7 @@
           %li
             = link_to "マイページ", user_path(current_user.id)
           %li
-            = link_to "問を立てる", new_question_path
+            = link_to "問を立てる", new_question_path unless current_user.philosopher
           %li
             = link_to "ログアウト", destroy_user_session_path, method: :delete
         - else

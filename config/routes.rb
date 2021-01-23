@@ -26,5 +26,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    member do
+       'philosopher_show'
+    end
+  end
 end

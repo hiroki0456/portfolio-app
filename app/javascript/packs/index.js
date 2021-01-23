@@ -11,10 +11,12 @@ import Vue from 'vue'
 import LikeButton from '../components/like/LikeButton.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
-  new Vue({
-    el: '#like',
-    components: { LikeButton }
-  })
+  document.querySelectorAll('#like').forEach((el, i)=> {
+    new Vue({
+      el: el,
+      components: { LikeButton }
+    });
+  });
 })
 
 
