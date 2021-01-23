@@ -18,6 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       sign_in(@user)
       redirect_to root_path
     else
+      byebug
       flash[:notice] = @user.errors.messages
       if (Rails.application.routes.recognize_path(request.referrer)[:action] == "new_philosopher")
         redirect_to new_philosopher_path
