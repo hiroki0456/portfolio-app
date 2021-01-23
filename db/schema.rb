@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_141214) do
+ActiveRecord::Schema.define(version: 2020_12_11_141029) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment", null: false
@@ -32,16 +32,6 @@ ActiveRecord::Schema.define(version: 2020_12_11_141214) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "philosopher_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "profile"
-    t.string "affiliation"
-    t.text "research"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_philosopher_profiles_on_user_id"
-  end
-
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "category_id", null: false
     t.string "title", null: false
@@ -55,6 +45,8 @@ ActiveRecord::Schema.define(version: 2020_12_11_141214) do
   create_table "user_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "profile"
     t.text "kleshas"
+    t.string "affiliation", default: ""
+    t.text "research"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -81,7 +73,6 @@ ActiveRecord::Schema.define(version: 2020_12_11_141214) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "users"
-  add_foreign_key "philosopher_profiles", "users"
   add_foreign_key "questions", "users"
   add_foreign_key "user_profiles", "users"
 end

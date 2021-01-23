@@ -8,6 +8,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def new_philosopher
+    @user = User.new
+  end
+
   def create
     @user = User.new(sign_up_params)
     if @user.save
@@ -15,18 +19,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to root_path
     else
       flash[:notice] = @user.errors.messages
-      redirect_to new_user_registration_path
+      if (Rails.application.routes.recognize_path(request.referrer)[:action] == "new_philosopher")
+        redirect_to new_philosopher_path
+      else
+        redirect_to new_user_registration_path
+      end
     end
   end
 
   # GET /resource/edit
   def user_edit
     @user = User.find(current_user.id)
-    if @user.philosopher
-    else
-      @user.build_user_profile unless @user.user_profile
-      render :user_edit
-    end
+    @user.build_user_profile unless @user.user_profile
   end
 
   # PUT /resource
@@ -57,12 +61,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :gender])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :gender, :philosopher])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :gender, user_profile_attributes: [:profile, :kleshas]])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :gender, user_profile_attributes: [:profile, :kleshas, :research, :affiliation]])
   end
 
   # The path used after sign up.
