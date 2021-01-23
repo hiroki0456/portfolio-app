@@ -1,0 +1,72 @@
+.container-signup
+  .container-box
+    .one-column
+      .login-container
+        .left-column
+          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            .signup-form-fields
+              .categories
+                - if params["action"] == "new_philosopher"
+                  %h1.title 哲学者登録
+                  %p こちらは哲学者用の会員ページになります。
+                  .signup-with-facebook
+                    %h2.facebook-title 一般会員ページへ
+                    .login-btn
+                      = link_to '一般会員ページ', new_user_registration_path, class: "facebook-btn"
+                - else
+                  %h1.title 一般メンバー登録
+                  %p こちらは一般会員ページになります。
+                  .signup-with-facebook
+                    %h2.facebook-title Facebookで会員登録する
+                    .login-btn
+                      = link_to '哲学者用ページ', new_philosopher_path, class: "facebook-btn"
+                %p.signup-with-email-title メールアドレスで会員登録する
+                .signup-with-email
+                  .control-group
+                    = f.label :nickname, class: "control-label" do
+                      %span.text ニックネーム
+                      %br
+                      (20文字以内)
+                    .controls
+                      = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
+                  -if flash[:notice] && flash[:notice]["nickname"]
+                    %span.error ニックネームを入力してください
+                  .control-group
+                    = f.label :gender, class: "control-label" do
+                      %span.text 性別
+                    .controls
+                      = f.collection_radio_buttons :gender, User.genders_i18n, :first , :second
+                  -if flash[:notice] && flash[:notice]["gender"]
+                    %span.error 性別を入力してください
+                  .control-group
+                    = f.label :email, class: "control-label" do
+                      %span.text メールアドレス
+                    .controls 
+                      = f.email_field :email, autofocus: true, autocomplete: "email"
+                  -if flash[:notice] && flash[:notice]["email"]
+                    %span.error メールアドレスを入力してください
+                  .control-group
+                    = f.label :password, class: "control-label" do
+                      %span.text パスワード
+                    .controls
+                      = f.password_field :password, autofocus: true, autocomplete: "password"
+                  -if flash[:notice] && flash[:notice]["password"]
+                    %span.error パスワードを入力してください（半角英数混合の８桁以上）
+                  .control-group
+                    = f.label :password_confirmation, class: "control-label" do
+                      %span.text パスワード確認用
+                    .controls
+                      = f.password_field :password_confirmation, autofocus: true, autocomplete: "nickname"
+                  -if flash[:notice] && flash[:notice]["password_confirmation"]
+                    %span.error パスワードと一致させてください
+                  - if params['action'] == 'new_philosopher'
+                    .control-group
+                      = f.label :philosopher, class: "control-label" do
+                        %span.text 哲学者用チェック
+                      .controls
+                        = f.check_box :philosopher, checked: true
+                  %p philosophia一般利用規約 をご確認の上、「同意して登録する」をおしてください
+                  .btn-area
+                    = f.submit "会員登録をする", class: 'btn'
+          = render "users/shared/links"
+
