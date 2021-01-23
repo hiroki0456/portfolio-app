@@ -7,11 +7,13 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one :user_profile, dependent: :destroy
+  has_one_attached :image
   accepts_nested_attributes_for :user_profile, allow_destroy: true
   # validation
   with_options presence: true do
     validates :nickname
     validates :gender
+    validates :image
   end
   
   # 安全性を担保するために、半角英数字混合のパスワードのみを受け入れる

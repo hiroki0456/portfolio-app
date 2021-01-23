@@ -59,12 +59,27 @@
                       = f.password_field :password_confirmation, autofocus: true, autocomplete: "nickname"
                   -if flash[:notice] && flash[:notice]["password_confirmation"]
                     %span.error パスワードと一致させてください
+                  = f.fields_for :user_profile,resource.build_user_profile do |p|
+                    .control-group
+                      = p.label :profile, class: "control-label" do
+                        %span.text プロフィール
+                      .controls
+                        = p.text_area :profile, rows: 10, style: "width: 335px"
+                    -if flash[:notice] && flash[:notice]["user_profile.profile"]
+                      %span.error プロフィールを入力してください
                   - if params['action'] == 'new_philosopher'
                     .control-group
                       = f.label :philosopher, class: "control-label" do
                         %span.text 哲学者用チェック
                       .controls
                         = f.check_box :philosopher, checked: true
+                    .control-group
+                      = f.label :image, class: "control-label" do
+                        %span.text アイコン
+                      .controls
+                        = f.file_field :image
+                    -if flash[:notice] && flash[:notice]["image"]
+                      %span.error 画像を入れてください
                   %p philosophia一般利用規約 をご確認の上、「同意して登録する」をおしてください
                   .btn-area
                     = f.submit "会員登録をする", class: 'btn'

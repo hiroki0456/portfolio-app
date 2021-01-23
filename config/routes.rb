@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get "edit_user", to: "users/registrations#user_edit", as: :edit_user
+    get "new_philosopher", to: "users/registrations#new_philosopher", as: :new_philosopher
   end
 
   resources :questions, only: [:new, :create, :show] do

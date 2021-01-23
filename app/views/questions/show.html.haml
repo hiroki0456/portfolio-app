@@ -31,11 +31,12 @@
                 %hr.line
                 .philosophia
                   = link_to "#" do
-                    = image_tag 'Charles.jpg'
+                    = image_tag comment.user.image
                   .profile
-                    = link_to "チャールズ・テイラー", "#"
-                    .introduce
-                      モントリオール出身。1952年にカナダの名門マギル大学を卒業（歴史専攻）、同年オックスフォード大学のローズ奨学生（Rhodes Scholar）となり、哲学、政治学および経済学を研究、1961年に哲学博士となった。
+                    = link_to comment.user.nickname, "#"
+                    - if comment.user.user_profile.profile
+                      .introduce
+                        = comment.user.user_profile.profile
       - if user_signed_in? && current_user.philosopher
         .comment
           .comment-container

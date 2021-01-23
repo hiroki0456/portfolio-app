@@ -69,7 +69,8 @@
             #user_user_profile_attributes_profile,
             #user_user_profile_attributes_kleshas,
             #user_user_profile_attributes_affiliation,
-            #user_user_profile_attributes_research {
+            #user_user_profile_attributes_research,
+            #user_user_profile_profile {
               width: 545px;
               border: 1px solid #b4b4b4;
               background: white;
@@ -83,6 +84,9 @@
             label {
               margin-right: 2em;
               vertical-align: 20%;
+            }
+            #user_image {
+              height: 22px;
             }
           }
         }
