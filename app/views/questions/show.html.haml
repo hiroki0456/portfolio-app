@@ -19,7 +19,7 @@
       - if @question.comments
         .answers
           .number= "哲学者からの回答 #{@question.comments.count}件"
-          - @question.comments.each do |comment|
+          - @question.comments.includes(:user).each do |comment|
             .box
               %h2.title= comment.title
               .answer-box
