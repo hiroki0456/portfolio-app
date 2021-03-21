@@ -1,58 +1,58 @@
 .profile-content
   .profile-user
-    - if user.philosopher
+    - if current_user.philosopher
       .user-flexbox
         %h2
-          = user.nickname
+          = current_user.nickname
           %span.sub-text さん
         .q-num 
           質問回答数
-          %span.num= user.comments.count
+          %span.num= current_user.comments.count
           件
       .row
         .user-profile
           性別/年代
-        %span= user.gender_i18n
+        %span= current_user.gender_i18n
       .row
         .user-profile
           プロフィール
-        - if user.user_profile
-          %span= user.user_profile.profile
+        - if current_user.profile
+          %span= @profile.content
       .row
         .user-profile
           所属研究所
-        - if user.user_profile
-          %span= user.user_profile.affiliation
+        - if current_user.profile
+          %span= @profile.philosopher_profile.affiliation
       .row
         .user-profile
           研究結果
-        - if user.user_profile
-          %span= user.user_profile.research
+        - if current_user.profile
+          %span= @profile.philosopher_profile.research
       = link_to edit_user_path do
         %button アカウントを編集する
     - else
       .user-flexbox
         %h2
-          = user.nickname
+          = current_user.nickname
           %span.sub-text さん
         .q-num 
           回答あり質問
-          %span.num= user.questions.reject{|question| !question.comments.present?}.count
+          %span.num= current_user.questions.reject{|question| !question.comments.present?}.count
           件
       .row
         .user-profile
           性別/年代
-        %span= user.gender_i18n
+        %span= current_user.gender_i18n
       .row
         .user-profile
           プロフィール
-        - if user.user_profile
-          %span= user.user_profile.profile
+        - if current_user.profile
+          %span= @profile.content
       .row
         .user-profile
           煩悩
-        - if user.user_profile
-          %span= user.user_profile.kleshas
+        - if current_user.profile
+          %span= @profile.general_profile.kleshas
       = link_to edit_user_path do
         %button アカウントを編集する
       

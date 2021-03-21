@@ -59,14 +59,14 @@
                       = f.password_field :password_confirmation, autofocus: true, autocomplete: "nickname"
                   -if flash[:notice] && flash[:notice]["password_confirmation"]
                     %span.error パスワードと一致させてください
-                  = f.fields_for :user_profile,resource.build_user_profile do |p|
-                    .control-group
-                      = p.label :profile, class: "control-label" do
-                        %span.text プロフィール
-                      .controls
-                        = p.text_area :profile, rows: 10, style: "width: 335px"
-                    -if flash[:notice] && flash[:notice]["user_profile.profile"]
-                      %span.error プロフィールを入力してください
+                  -# = f.fields_for :user_profile,resource.build_user_profile do |p|
+                  -#   .control-group
+                  -#     = p.label :profile, class: "control-label" do
+                  -#       %span.text プロフィール
+                  -#     .controls
+                  -#       = p.text_area :profile, rows: 10, style: "width: 335px"
+                  -#   -if flash[:notice] && flash[:notice]["user_profile.profile"]
+                  -#     %span.error プロフィールを入力してください
                   - if params['action'] == 'new_philosopher'
                     .control-group
                       = f.label :philosopher, class: "control-label" do

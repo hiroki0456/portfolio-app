@@ -2,9 +2,9 @@
   .container-box
     .one-column
       .login-container
-        - if @user.philosopher
+        - if current_user.philosopher
           .left-column
-            = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+            = form_for(current_user, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
               .signup-form-fields
                 .categories
                   %h1.title 会員情報を編集する
@@ -25,29 +25,34 @@
                         = f.collection_radio_buttons :gender, User.genders_i18n, :first , :second
                     -if flash[:notice] && flash[:notice]["gender"]
                       %span.error 性別を入力してください
-                    = f.fields_for :user_profile do |p|
+                    .control-group
+                      = f.label :image, class: "control-label" do
+                        %span.text アイコン
+                      .controls
+                        = f.file_field :image
+                    = f.fields_for :profile do |p|
                       .control-group
-                        = p.label :profile, class: "control-label" do
+                        = p.label :content, class: "control-label" do
                           %span.text プロフィール
                         .controls
-                          = p.text_area :profile, rows: 10, style: "width: 330px"
+                          = p.text_area :content, rows: 10, style: "width: 330px", value: current_user.profile ? @profile.content : nil
                       .control-group
                         = p.label :affiliation, class: "control-label" do
                           %span.text 所属研究所
                         .controls
-                          = p.text_area :affiliation, rows: 10, style: "width: 330px"
+                          = p.text_area :affiliation, rows: 10, style: "width: 330px", value: current_user.profile ? @profile.philosopher_profile.affiliation : nil
                       .control-group
                         = p.label :research, class: "control-label" do
                           %span.text 研究結果
                         .controls
-                          = p.text_area :research, rows: 10, style: "width: 330px"
+                          = p.text_area :research, rows: 10, style: "width: 330px",value: current_user.profile ? @profile.philosopher_profile.research : nil
                     %p philosophia一般利用規約 をご確認の上、「同意して登録する」をおしてください
                     .btn-area
                       = f.submit "更新する", class: 'btn'
             = render "users/shared/links"
         - else
           .left-column
-            = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+            = form_for(current_user, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
               .signup-form-fields
                 .categories
                   %h1.title 会員情報を編集する
@@ -68,17 +73,17 @@
                         = f.collection_radio_buttons :gender, User.genders_i18n, :first , :second
                     -if flash[:notice] && flash[:notice]["gender"]
                       %span.error 性別を入力してください
-                    = f.fields_for :user_profile do |p|
+                    = f.fields_for :profile do |p|
                       .control-group
-                        = p.label :profile, class: "control-label" do
+                        = p.label :content, class: "control-label" do
                           %span.text プロフィール
                         .controls
-                          = p.text_area :profile, rows: 10, style: "width: 330px"
+                          = p.text_area :content, rows: 10, style: "width: 330px", value: current_user.profile ? @profile.content : nil
                       .control-group
                         = p.label :kleshas, class: "control-label" do
                           %span.text 煩悩
                         .controls
-                          = p.text_area :kleshas, rows: 10, style: "width: 330px"
+                          = p.text_area :kleshas, rows: 10, style: "width: 330px", value: current_user.profile ? @profile.general_profile.kleshas : nil
                     %p philosophia一般利用規約 をご確認の上、「同意して登録する」をおしてください
                     .btn-area
                       = f.submit "更新する", class: 'btn'
