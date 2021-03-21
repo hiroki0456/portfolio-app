@@ -18,7 +18,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       sign_in(@user)
       redirect_to root_path
     else
-      byebug
       flash[:notice] = @user.errors.messages
       if (Rails.application.routes.recognize_path(request.referrer)[:action] == "new_philosopher")
         redirect_to new_philosopher_path
@@ -30,14 +29,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def user_edit
-    @user = User.find(current_user.id)
-    @user.build_user_profile unless @user.user_profile
+    @profile = Profile.find_by(user_id: current_user.id)
   end
 
   # PUT /resource
   def update
-    @user = User.find(current_user.id)
     if @user.update(account_update_params)
+      profile_update
       redirect_to user_path(current_user)
     else
       flash[:notice] = @user.errors.messages
@@ -62,12 +60,39 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :gender, :philosopher, :image, user_profile_attributes: [:profile]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :gender, :philosopher, :image])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :gender, user_profile_attributes: [:profile, :kleshas, :research, :affiliation]])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :gender, :image])
+  end
+
+  def profile_update
+    if current_user.philosopher
+      profile = Profile.find_or_initialize_by(user_id: current_user)
+      philosopher_profile = PhilosopherProfile.find_or_initialize_by(id: profile.profile_id)
+      philosopher_profile.update(
+        affiliation: params[:user][:profile][:affiliation],
+        research: params[:user][:profile][:research]
+      )
+      profile.update(
+        content: params[:user][:profile][:content],
+        user_id: current_user.id,
+        profile_type: "PhilosopherProfile",
+        profile_id: philosopher_profile.id
+      )
+    else
+      profile = Profile.find_or_initialize_by(user_id: current_user)
+      general_profile = GeneralProfile.find_or_initialize_by(id: profile.profile_id)
+      general_profile.update(kleshas: params[:user][:profile][:kleshas])
+      profile.update(
+        content: params[:user][:profile][:content],
+        user_id: current_user.id,
+        profile_type: "GeneralProfile",
+        profile_id: general_profile.id
+      )
+    end
   end
 
   # The path used after sign up.
