@@ -7,10 +7,10 @@
   %span 哲学者と一緒に考える
   %br
   %span 対話型相談サイト
-    
-  .button
-    = link_to new_question_path, class: "question-box" do
-      %button 問を立てる
+  - if user_signed_in? && !current_user.philosopher
+    .button
+      = link_to new_question_path, class: "question-box" do
+        %button 問を立てる
   .container-box
     .images
       = image_tag 'arendt-image.jpg', class: "image"

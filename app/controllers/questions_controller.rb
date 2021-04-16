@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_question, only: [:show, :like]
-  # move_to_index, only: [:new]
+  before_action :move_to_index, only: [:new, :create]
+
   def index
     @questions = Question.order(created_at: "desc").limit(5)
   end
@@ -47,6 +48,6 @@ class QuestionsController < ApplicationController
   end
 
   def move_to_index
-    # redirect_to 
+    redirect_to root_path if user_signed_in? && current_user.philosopher
   end
 end

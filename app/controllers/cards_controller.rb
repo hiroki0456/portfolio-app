@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-
+  before_action :move_to_index, [:new]
   def new
     @card = Card.new
   end
@@ -32,5 +32,11 @@ class CardsController < ApplicationController
     card.destroy
     flash[:alert] = '定期課金を中止しました'
     redirect_to root_path
+  end
+
+  private
+
+  def move_to_index
+    redirect_to root_path if user_signed_in? && current_user.philosopher
   end
 end
