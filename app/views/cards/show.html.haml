@@ -1,0 +1,16 @@
+.profile-content
+  .profile-user
+    .user-flexbox
+      %h2
+        = current_user.nickname
+        %span.sub-text さんのカード情報
+    .row
+      .user-profile
+        カード番号
+      %span= "*" * 8 + @card_information.last4
+    .row
+      .user-profile
+        有効期限
+        %span= @card_information.exp_month.to_s + "/" + @card_information.exp_year.to_s
+    = link_to card_path, method: :delete do
+      %button 動画相談会員を退会する(カード情報も削除されます)

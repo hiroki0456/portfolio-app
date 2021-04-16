@@ -1,0 +1,32 @@
+.question-form
+  .question-box
+    %h1.title カード情報の登録
+    .message
+      %h2.message-content 寛大さは行動と自由への鍵である。
+      .message-author
+        ハンナ・アーレント
+    .form
+      = form_with model: @card, id: "card_form", local: true  do |f|
+        = render "shares/errors", model: @card
+        .control-group
+          = f.label :card_number do
+            %span.text カード番号を入力してください
+          .controls
+            = f.text_field :card_number, maxlength:"16"
+        .control-group
+          = f.label :exp_month do
+            %span.text 有効期限を入力してください（月）
+          .controls
+            = f.select :exp_month, 1..12
+        .control-group
+          = f.label :exp_year do
+            %span.text 有効期限を入力してください（年）
+          .controls 
+            = f.select :exp_year, 20..30
+        .control-group
+          = f.label :cvc do
+            %span.text カード背面にある3桁、もしくは、4桁の番号を入力してください
+          .controls
+            = f.text_field :cvc
+        .btn-area
+          = f.submit "カード情報を登録する", class: 'btn', id: "btn"
