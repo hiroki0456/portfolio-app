@@ -34,9 +34,9 @@
                     = image_tag comment.user.image
                   .profile
                     = link_to comment.user.nickname, "#"
-                    - if comment.user.user_profile.profile
+                    - if comment.user.profile
                       .introduce
-                        = comment.user.user_profile.profile
+                        = comment.user.profile.content
       - if user_signed_in? && current_user.philosopher
         .comment
           .comment-container
