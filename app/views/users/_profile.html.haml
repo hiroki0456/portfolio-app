@@ -55,9 +55,10 @@
           %span= @profile.general_profile.kleshas
       = link_to edit_user_path do
         %button アカウントを編集する
-    - if !current_user.card
-      = link_to new_card_path do
-        %button オンライン質問し放題プランに変更する
-    - else
-      = link_to card_path(current_user.card.id) do
-        %button カード情報をみる
+    - if !current_user.philosopher
+      - if !current_user.card
+        = link_to new_card_path do
+          %button オンライン質問し放題プランに変更する
+      - else
+        = link_to card_path(current_user.card.id) do
+          %button カード情報をみる
