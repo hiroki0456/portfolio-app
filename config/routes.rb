@@ -32,4 +32,6 @@ Rails.application.routes.draw do
        'philosopher_show'
     end
   end
+
+  resources :cards, only: [:create, :new, :show, :destroy]
 end

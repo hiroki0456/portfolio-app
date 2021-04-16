@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :questions
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_one :card, dependent: :destroy
   has_one :profile, dependent: :destroy
   has_one_attached :image
   # validation
