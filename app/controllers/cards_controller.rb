@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :move_to_index, [:new]
+  before_action :move_to_index, only: [:new]
   def new
     @card = Card.new
   end
