@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   before_action :set_question, only: [:show, :like]
   before_action :move_to_index, only: [:new, :create]
+  before_action :comment_redirect_to_root, only: [:for_reply]
 
   def index
     @questions = Question.order(created_at: "desc").limit(5)
@@ -34,7 +35,13 @@ class QuestionsController < ApplicationController
 
   def category_search
     @category = Category.find(params[:category_id])
+    @categories =  Category.all.to_ary.drop(1)
     @questions = @category.questions.page(params[:page]).per(10)
+  end
+
+  def for_reply
+    @questions = Question.order(created_at: "desc").page(params[:page]).per(10)
+    @categories =  Category.all.to_ary.drop(1)
   end
 
   private
@@ -49,5 +56,9 @@ class QuestionsController < ApplicationController
 
   def move_to_index
     redirect_to root_path if user_signed_in? && current_user.philosopher
+  end
+
+  def comment_redirect_to_root
+    redirect_to root_path if user_signed_in? && !current_user.philosopher
   end
 end

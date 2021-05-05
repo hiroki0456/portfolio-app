@@ -10,6 +10,8 @@
           %li
             = link_to "問を立てる", new_question_path unless current_user.philosopher
           %li
+            = link_to "コメントする", for_reply_questions_path if current_user.philosopher
+          %li
             = link_to "ログアウト", destroy_user_session_path, method: :delete
         - else
           %li
