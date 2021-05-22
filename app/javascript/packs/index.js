@@ -6,19 +6,18 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
-
+import store from "../store/store.js";
 // 作成したコンポーネントファイルをimportします
 import LikeButton from '../components/like/LikeButton.vue'
+import CommentForm from '../components/comment/CommentForm.vue'
+import CommentList from '../components/comment/CommentList.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('#like').forEach((el, i)=> {
-    new Vue({
-      el: el,
-      components: { LikeButton }
-    });
+  new Vue({
+    el: "#comment-form",
+    store,
+    components: { LikeButton, CommentForm, CommentList }
   });
-
-  
 })
 
 
