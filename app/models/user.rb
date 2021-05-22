@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Rails.application.routes.url_helpers
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -20,6 +21,9 @@ class User < ApplicationRecord
     self.philosopher
   end
 
+  def image_url
+    image.attached? ? url_for(image) : nil
+  end
   
   # 安全性を担保するために、半角英数字混合のパスワードのみを受け入れる
   # 文字数は6~20で設定する。しかし、6文字では安全性を十分に担保できるかは不明

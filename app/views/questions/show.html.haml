@@ -1,7 +1,7 @@
 = javascript_pack_tag 'index'
 .main-show
   .left-column-show
-    .default
+    .default#comment-form
       .question
         .detail
           .title 
@@ -17,34 +17,6 @@
             = simple_format(@question.question)
             %span.date= @question.created_at.strftime('%Y年%m月%d日 %H時%M分')
       - if @question.comments
-        .answers
-          .number= "哲学者からの回答 #{@question.comments.count}件"
-          - @question.comments.includes(:user).each do |comment|
-            .box
-              %h2.title= comment.title
-              .answer-box
-                = simple_format(comment.comment)
-                %span.date= comment.created_at.strftime('%Y年%m月%d日 %H時%M分')
-                - if user_signed_in? && !current_user.philosopher
-                  .flexbox#like
-                    %like-button{":question-id" => "#{@question.id}", ":comment-id" => "#{comment.id}", ":user-id" => "#{current_user.id}"}
-                %hr.line
-                .philosophia
-                  = link_to "#" do
-                    = image_tag comment.user.image
-                  .profile
-                    = link_to comment.user.nickname, "#"
-                    - if comment.user.profile
-                      .introduce
-                        = comment.user.profile.content
+        %comment-list{":question-id" => @question.id }
       - if user_signed_in? && current_user.philosopher
-        .comment
-          .comment-container
-            .triangle
-            = form_with model: [@question,@comment], local: true do |f|
-              .text-field
-                = f.text_field :title, placeholder: "タイトルを入力してください"
-              .text-field
-                = f.text_area :comment, rows: 10, placeholder: "回答を入力してください"
-              .comment-btn
-                = f.submit "回答する"
+        %comment-form{":question-id" => @question.id }

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       get 'category_search'
       get 'for_reply'
     end
-    resources :comments, only: [:create, :edit] do
+    resources :comments, only: [:index, :create, :edit] do
       member do
         get 'like'
       end
