@@ -1,4 +1,5 @@
 const pay = () => {
+  console.log('test')
 Payjp.setPublicKey("pk_test_7acaf09842ce98080d0e3820");
 const form = document.getElementById("card_form");
 form.addEventListener("submit", (e) => {
