@@ -48,15 +48,6 @@
 |admin                  |boolean   |null: false, default: false   |
 |philosopher            |boolean   |default: false                |
 
-## profilesテーブル(STIテーブル)
-
-|column-----------------|type------|options-----------------------|
-|-----------------------|----------|------------------------------|
-|content                |text      |                              |
-|profile_type           |string    |                              |
-|profile                |bigint    |                              |
-|user                   |references|null: false, foreign_key: true|
-
 ## questionsテーブル
 
 |column-----------------|type------|options-----------------------|
