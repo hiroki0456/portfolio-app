@@ -13,7 +13,7 @@
 そのため、「哲学者」と呼ばれる人生について論理的に、そして、客観的に研究している方々に相談することで、
 新たな悩みの解決策が見つかるのではないか、と思い、このサイトを作成しました。
 
-# 機能用件
+# 機能要件
 - ユーザー管理機能(ログイン・ログアウト)
 - プロフィール機能(一般ユーザー・哲学者ユーザー)
 - 相談投稿機能
@@ -37,7 +37,7 @@
 # DB設計
 ## usersテーブル
 
-|column-----------------|type------|options-----------------------|
+|column                 |type      |options                       |
 |-----------------------|----------|------------------------------|
 |email                  |string    |null: false, unique: true     |
 |encrypted_password     |string    |null: false                   |
@@ -50,7 +50,7 @@
 
 ## questionsテーブル
 
-|column-----------------|type------|options-----------------------|
+|column                 |type      |options                       |
 |-----------------------|----------|------------------------------|
 |category_id            |integer   |null: false                   |
 |title                  |string    |null: false                   |
@@ -59,7 +59,7 @@
 
 ## commentsテーブル
 
-|column-----------------|type------|options-----------------------|
+|column                 |type      |options                       |
 |-----------------------|----------|------------------------------|
 |comment                |text      |null: false                   |
 |title                  |string    |null: false                   |
@@ -68,7 +68,7 @@
 
 ## likesテーブル
 
-|column-----------------|type------|options-----------------------|
+|column                 |type      |options                       |
 |-----------------------|----------|------------------------------|
 |comment                |references|null: false, foreign_key: true|
 |user                   |references|null: false, foreign_key: true|
@@ -76,7 +76,7 @@
 
 ## profilesテーブル(STI)
 
-|column-----------------|type------|options-----------------------|
+|column                 |type      |options                       |
 |-----------------------|----------|------------------------------|
 |content                |text      |                              |
 |profile_type           |string    |                              |
@@ -85,20 +85,20 @@
 
 ## philosopher_profilesテーブル
 
-|column-----------------|type------|options-----------------------|
+|column                 |type      |options                       |
 |-----------------------|----------|------------------------------|
 |affiliation            |string    |                              |
 |research               |text      |                              |
 
 ## general_profilesテーブル
 
-|column-----------------|type------|options-----------------------|
+|column                 |type      |options                       |
 |-----------------------|----------|------------------------------|
 |kleshas                |text      |                              |
 
 ## cardsテーブル
 
-|column-----------------|type------|options-----------------------|
+|column                 |type      |options                       |
 |-----------------------|----------|------------------------------|
 |customer_id            |string    |                              |
 |card_id                |string    |                              |
@@ -106,6 +106,6 @@
 
 ## plansテーブル
 
-|column-----------------|type------|options-----------------------|
+|column                 |type      |options                       |
 |-----------------------|----------|------------------------------|
 |plan_id                |string    |                              |
