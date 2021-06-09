@@ -29,7 +29,7 @@
         - if current_user.profile
           %span= @profile.philosopher_profile.research
       = link_to edit_user_path do
-        %button アカウントを編集する
+        %button{value: "アカウントを編集する"} アカウントを編集する
     - else
       .user-flexbox
         %h2
@@ -54,11 +54,11 @@
         - if current_user.profile
           %span= @profile.general_profile.kleshas
       = link_to edit_user_path do
-        %button アカウントを編集する
+        %button{value: "アカウントを編集する"} アカウントを編集する
     - if !current_user.philosopher
       - if !current_user.card
         = link_to new_card_path do
-          %button オンライン質問し放題プランに変更する
+          %button{value: "オンライン質問し放題プランに変更する"} オンライン質問し放題プランに変更する
       - else
         = link_to card_path(current_user.card.id) do
-          %button カード情報をみる
+          %button{value: "カード情報をみる"} カード情報をみる
