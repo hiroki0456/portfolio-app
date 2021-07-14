@@ -30,7 +30,7 @@ class User < ApplicationRecord
   # ユーザーの利用頻度を考慮すると6文字くらいでないと覚えられない可能性がある
   validates :password,
             format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,20}+\z/i,
-            message: "can be set using half-width English numbers and letters, using more than 6 characters but less than 20."},
+            message: "半角英数字混合で入力してください"},
             on: :create
 
   # これ以上の追加を想定しないため、
